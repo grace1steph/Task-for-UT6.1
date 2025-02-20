@@ -45,6 +45,26 @@
             border-radius: 5px;
             font-size: 12px;
         }
+
+        .option-btn1{
+            background-color: lightblue;
+        }
+
+        .option-btn2{
+            background-color: pink;
+        }
+
+        .option-btn3{
+            background-color: yellow;
+        }
+
+        .option-btn4{
+            background-color: green;
+        }
+
+        .option-btn5{
+            background-color: purple;
+        }
         
         .option-btn:hover {
             background: #888;
