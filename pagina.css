@@ -20,53 +20,54 @@
         }
   
         .personalizer-box {
-            display: none;
             position: absolute;
             background: white;
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            top: 40px;
+            left: 10px;
             width: 150px;
             text-align: center;
         }
 
-        .button-container {
+        .menu{
+            background: black;
+            color: white;
+            padding: 10px;
+            display: flex;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .menu button{
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .color-btn, .text-btn{
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            cursor: pointer;
+            margin: 3px;
+        }
+
+        .font-btn-container{
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
+            gap: 3px;
         }
-        
-        .option-btn {
+
+        .font-btn{
             width: 30px;
-            height: 30px;
-            border: none;
-            background: #ccc;
+            height: 25px;
             cursor: pointer;
-            border-radius: 5px;
             font-size: 12px;
-        }
+            text-align: center;
+            border: 2px solid black;
 
-        .option-btn1{
-            background-color: lightblue;
-        }
-
-        .option-btn2{
-            background-color: pink;
-        }
-
-        .option-btn3{
-            background-color: yellow;
-        }
-
-        .option-btn4{
-            background-color: green;
-        }
-
-        .option-btn5{
-            background-color: purple;
-        }
-        
-        .option-btn:hover {
-            background: #888;
-            color: white;
         }

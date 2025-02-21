@@ -14,22 +14,42 @@
         <a href="#">Images</a>
     </nav>
 
+
     <div class="personalizer-box" id="personalizer-box">
-        <h4>Opciones</h4>
-        <div class="button-container">
-            <button class="option-btn1"></button>
-            <button class="option-btn2"></button>
-            <button class="option-btn3"></button>
-            <button class="option-btn4"></button>
-            <button class="option-btn5"></button>
-            <button class="option-btn6">6</button>
-            <button class="option-btn7">7</button>
-            <button class="option-btn8">8</button>
-            <button class="option-btn9">9</button>
-            <button class="option-btn10">10</button>
-        </div>
+        <p>BG_ Color</p>
+        <div class="Color-btn" style="background: pink;" onclick="changeBgcolor('red')"></div>
+        <div class="Color-btn" style="background: blue;" onclick="changeBgcolor('blue')"></div>
+        <div class="Color-btn" style="background: green;" onclick="changeBgcolor('green')"></div>
+        <div class="Color-btn" style="background: yellow;" onclick="changeBgcolor('yellow')"></div>
+        <div class="Color-btn" style="background: orange;" onclick="changeBgcolor('orange')"></div>
+    
+
+        <p>Change_letters</p>
+        <div class="text-btn" style="background: pink;" onclick="changeTextColor('red')"></div>
+        <div class="text-btn" style="background: blue;" onclick="changeTextColor('blue')"></div>
+        <div class="text-btn" style="background: green;" onclick="changeTextColor('green')"></div>
+        <div class="text-btn" style="background: yellow;" onclick="changeTextColor('yellow')"></div>
+        <div class="text-btn" style="background: orange;" onclick="changeTextColor('orange')"></div>
+    
+
+    <p>Font-style</p>
+    <div class="font-btn-container">
+        <button class="font-btn" onclick="changeFont('Arial')">A</button>
+        <button class="font-btn" onclick="changeFont('Verdana')">V</button>
+        <button class="font-btn" onclick="changeFont('Courier')">C</button>
+        <button class="font-btn" onclick="changeFont('Georgia')">G</button>
+        <button class="font-btn" onclick="changeFont('Impact')">I</button>
     </div>
 
+    <div class="font-btn-container">
+        <button class="font-btn" onclick="changeFont('Comic Sanz MS')">CS</button>
+        <button class="font-btn" onclick="changeFont('Times New Roman')">T</button>
+        <button class="font-btn" onclick="changeFont('Trebuchet MS')">TM</button>
+        <button class="font-btn" onclick="changeFont('Lucida Console')">LC</button>
+        <button class="font-btn" onclick="changeFont('Palatino Linotype')">PL</button>
+    </div>
+</div>
+    
     <div class="container">
         <h1>Welcome to Personalizer</h1>
         <p>This is a paragraph that you can adapt it´s content</p>
