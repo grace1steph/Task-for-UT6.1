@@ -10,8 +10,9 @@
  
     <nav>
         <a href="#" id="personalizer-btn">Personalizer</a>
-        <a href="#">Form</a>
-        <a href="#">Images</a>
+        <a href="form.html">Form</a>
+        <a href="image.html">Images</a>
+        <a href="mode.html" id="mode-btn" style="display: none;">Mode</a> <!-- Este enlace será controlado por JavaScript -->
     </nav>
 
 
@@ -56,9 +57,16 @@
         <p>Click to personalizer banner</p>
     </div>
 
-</div>
-
-
 <script src="pagina.js"></script>
+<script>
+    window.onload = function() {
+        // Verificar si estamos en la página form.html
+        if (window.location.pathname.includes("form.html")) {
+            document.getElementById("mode-btn").style.display = "inline";
+        } else {
+            document.getElementById("mode-btn").style.display = "none";
+        }
+    };
+</script>
 </body>
 </html>
