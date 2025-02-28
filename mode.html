@@ -17,35 +17,40 @@
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: white;
-            color: black;
-            transition: background-color 0.3s, color 0.3s; transition: background-color 0.3s, color 0.3s;
-        }
-        .dark-mode {
-            background-color: black;
-            color: white;
+            transition: background-color 0.3s, color 0.3s; /* Transición suave */
         }
         .container {
-            width: 300px;
+            width: 450px;
             margin: 50px auto;
-            padding: 20px;
+            padding: 40px;
             border: 1px solid #ccc;
             border-radius: 10px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
         }
         label {
             font-weight: bold;
         }
         input, select, button {
-            width: 100%;
-            margin: 5px 0;
-            padding: 8px;
+            width: 95%;
+            margin: 10px 0;
+            padding: 5px;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transición suave */
         }
         .gender-options {
             display: flex;
             gap: 10px;
             margin: 5px 0;
         }
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+        .dark-mode .container {
+            background-color: #555;
+            border-color: #888;
+        }
+        
     </style>
 </head>
 <body>
@@ -53,7 +58,7 @@
         <a href="pagina.html" id="personalizer-btn">Personalizer</a>
         <a href="form.html">Form</a>
         <a href="image.html">Images</a>
-        <a href="mode.html" id="mode-btn">Mode</a>
+        <a href="mode.html" id="mode-btn" style="display: none;">Dark</a>
     </nav>
     <div class="container">
         <label for="full-name">Full Name:</label>
@@ -62,7 +67,8 @@
         <label for="email">Email:</label>
         <input type="email" id="email" placeholder="Enter your email">
 
-        <button>Validate</button>
+        <button id="validate-btn">Validate</button>
+        <div id="email-message" style="color: red; margin-top: 5px;"></div>
 
         <label>Gender:</label>
         <div class="gender-options">
@@ -78,28 +84,107 @@
 
         <label for="country">Country:</label>
         <select id="country">
-            <option>Select your country</option>
+            <option value="">Select your country</option>
+            <option value="spain">Spain</option>
+            <option value="france">France</option>
+            <option value="germany">Germany</option>
         </select>
 
-        <button id="send-btn" style="display: none;">Send</button>
+        <div id="provinces-container" style="display: none; margin-top: 10px;">
+            <label for="provinces">Province:</label>
+            <select id="provinces">
+                <option value="">Select your province</option>
+                <option value="madrid">Madrid</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="valencia">Valencia</option>
+                <option value="sevilla">Sevilla</option>
+                <option value="granada">Granada</option>
+                <option value="navarra">Navarra</option>
+            </select>
+        </div>
+
+        <div id="towns-container" style="display: none; margin-top: 10px;">
+            <label for="towns">Town:</label>
+            <select id="towns">
+                <option value="">Select your town</option>
+                <option value="pamplona">Pamplona</option>
+                <option value="estella">Estella</option>
+                <option value="tudela">Tudela</option>
+                <option value="corella">Corella</option>
+            </select>
+        </div>
+
+        <button id="send-btn">Send</button>
     </div>
 
     <script>
         window.onload = function() {
-            if (window.location.pathname.includes("form.html") || window.location.pathname.includes("image.html") || 
-                window.location.pathname.includes("mode.html")) {
-                document.getElementById("mode-btn").style.display = "inline"; 
+            
+            if (window.location.pathname.includes("form.html") || window.location.pathname.includes("image.html") || window.location.pathname.includes("mode.html")) {
+                document.getElementById("mode-btn").style.display = "inline";
+            }
+
+         
+            if (localStorage.getItem("theme") === "dark") {
+                document.body.classList.add("dark-mode");
+                document.getElementById("mode-btn").textContent = "Light";
+            } else {
+                document.getElementById("mode-btn").textContent = "Dark";
             }
         };
 
-        document.getElementById("mode-btn").addEventListener("click", function() {
-            document.body.classList.toggle("dark-mode");
+       
+        document.getElementById("validate-btn").addEventListener("click", function() {
+            let emailInput = document.getElementById("email").value;
+            let messageDiv = document.getElementById("email-message");
 
-            // Cambiar el texto del botón entre "Dark" y "Light"
-            if (document.body.classList.contains("dark-mode")) {
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (emailPattern.test(emailInput)) {
+                messageDiv.style.color = "green";
+                messageDiv.textContent = "✅ It is valid :)";
+            } else {
+                messageDiv.style.color = "red";
+                messageDiv.textContent = "❌ It is not correct, please retry :(";
+            }
+        });
+
+        document.getElementById("country").addEventListener("change", function() {
+            let selectedCountry = this.value;
+            let provincesContainer = document.getElementById("provinces-container");
+
+            if (selectedCountry === "spain") {
+                provincesContainer.style.display = "block";
+            } else {
+                provincesContainer.style.display = "none";
+                document.getElementById("towns-container").style.display = "none";
+            }
+        });
+
+        document.getElementById("provinces").addEventListener("change", function() {
+            let selectedProvince = this.value;
+            let townsContainer = document.getElementById("towns-container");
+
+            if (selectedProvince === "navarra") {
+                townsContainer.style.display = "block";
+            } else {
+                townsContainer.style.display = "none";
+            }
+        });
+
+        
+        document.getElementById("mode-btn").addEventListener("click", function() {
+            const body = document.body;
+
+            body.classList.toggle("dark-mode");
+
+           
+            if (body.classList.contains("dark-mode")) {
                 this.textContent = "Light";
+                localStorage.setItem("theme", "dark");
             } else {
                 this.textContent = "Dark";
+                localStorage.setItem("theme", "light");
             }
         });
     </script>

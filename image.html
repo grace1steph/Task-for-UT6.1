@@ -4,6 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Images</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0%;
+            font-family: Arial, Helvetica, sans-serif;
+           
+        }
+        nav {
+            padding: 10px;
+            background-color: #333;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }   
+
+        .container {
+            position: relative;
+            width: 850px;
+            height: 90px;
+            margin: 0px auto;
+            padding: 80px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 4px 2px 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .magic-tittle{
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            color: rgb(31, 131, 245);
+            text-align: left;
+        }
+        .second-cont{
+            position: relative;
+            width: 850px;
+            height: 60px;
+            margin: 20px auto;
+            padding: 80px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 4px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .AutoLoading{
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            color: rgb(31, 131, 245);
+        }
+    </style>
 </head>
 
 <body>
@@ -14,8 +68,15 @@
         <a href="mode.html">Mode</a>        
     </nav>
     <div class="container">
-        <button id="magic-button">Change Image!</button>
+        <h4 class="magic-tittle">Magic button: Create & Change Image</h3>
 
+        <button id="magic-button">Change Image!</button>
+        
     </div>
+    <div class="second-cont">
+        <h4 class="AutoLoading">AutoLoading</h3>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
