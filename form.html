@@ -79,12 +79,14 @@
 
     <script>
         window.onload = function() {
-            // Verificar si estamos en la página form.html
-            if (window.location.pathname.includes("mode.html")) {
-                // Mostrar el botón 'Send' solo en form.html
-                document.getElementById("send-btn").style.display = "block";
+     
+            if (window.location.pathname.includes("form.html") || window.location.pathname.includes("image.html")|| 
+            window.location.pathname.includes("mode.html")
+            ){
+                document.getElementById("mode-btn").style.display = "inline"; 
             }
         };
     </script>
+    
 </body>
 </html>

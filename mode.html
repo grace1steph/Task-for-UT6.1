@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Mode</title>
     <style>
-        nav{
+        nav {
             padding: 10px;
             background-color: #333;
             text-align: center;
@@ -17,6 +17,13 @@
         }
         body {
             font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s; transition: background-color 0.3s, color 0.3s;
+        }
+        .dark-mode {
+            background-color: black;
+            color: white;
         }
         .container {
             width: 300px;
@@ -46,7 +53,7 @@
         <a href="pagina.html" id="personalizer-btn">Personalizer</a>
         <a href="form.html">Form</a>
         <a href="image.html">Images</a>
-        <a href="mode.html" id="mode-btn" style="display: none;">Mode</a>
+        <a href="mode.html" id="mode-btn">Mode</a>
     </nav>
     <div class="container">
         <label for="full-name">Full Name:</label>
@@ -79,14 +86,22 @@
 
     <script>
         window.onload = function() {
-            // Verificar si estamos en la página form.html
-            if (window.location.pathname.includes("form.html")) {
-                document.getElementById("send-btn").style.display = "block";
-                document.getElementById("mode-btn").style.display = "inline";
-            } else {
-                document.getElementById("mode-btn").style.display = "none";
+            if (window.location.pathname.includes("form.html") || window.location.pathname.includes("image.html") || 
+                window.location.pathname.includes("mode.html")) {
+                document.getElementById("mode-btn").style.display = "inline"; 
             }
         };
-    </script>pt>pt>pt>
+
+        document.getElementById("mode-btn").addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+
+            // Cambiar el texto del botón entre "Dark" y "Light"
+            if (document.body.classList.contains("dark-mode")) {
+                this.textContent = "Light";
+            } else {
+                this.textContent = "Dark";
+            }
+        });
+    </script>
 </body>
 </html>

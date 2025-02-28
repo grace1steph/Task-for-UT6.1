@@ -16,3 +16,12 @@ function changeFont(font) {
     document.querySelector(".container").style.fontFamily = font;
 }
 
+
+window.onload = function() {
+     
+    if (window.location.pathname.includes("form.html") || window.location.pathname.includes("image.html")|| 
+    window.location.pathname.includes("mode.html")
+    ){
+        document.getElementById("mode-btn").style.display = "inline"; 
+    }
+};

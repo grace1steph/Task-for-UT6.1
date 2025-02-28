@@ -3,6 +3,7 @@
             margin: 0;
             padding: 0%;
             font-family: Arial, Helvetica, sans-serif;
+           
         }
         nav{
             padding: 10px;
@@ -20,16 +21,23 @@
         }
   
         .personalizer-box {
-            position: absolute;
+            position: fixed;
             background: white;
             padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
             display: none;
-            top: 40px;
-            left: 10px;
+            top: 38px;
+            left: 500px;
             width: 150px;
+            height: 180px;
             text-align: center;
+            border: 1px solid #ddd;
+
+        }
+
+        .personalizer-box p{
+            margin: 10px 0 5px 0;
+            font-size: 17px;
         }
 
         .menu{
@@ -53,21 +61,28 @@
             height: 20px;
             display: inline-block;
             cursor: pointer;
-            margin: 3px;
+            border: 3px solid black;
+            border-radius: 8px;
         }
 
         .font-btn-container{
             display: flex;
             flex-wrap: wrap;
-            gap: 3px;
+            gap: 5px;
+            justify-content: center;
         }
 
         .font-btn{
-            width: 30px;
+            width: 25px;
             height: 25px;
             cursor: pointer;
             font-size: 12px;
             text-align: center;
-            border: 2px solid black;
-
+            border: 3px solid black;
+            border-radius: 8px;
+            background-color: #e6e2e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom:0px;
         }
