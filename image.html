@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Images</title>
     <style>
-        body{
+        body {
             margin: 0;
-            padding: 0%;
+            padding: 0;
             font-family: Arial, Helvetica, sans-serif;
-           
         }
         nav {
             padding: 10px;
@@ -20,63 +19,99 @@
             color: white;
             margin: 0 15px;
             text-decoration: none;
-        }   
-
-        .container {
+        }
+        
+                .container, .second-cont {
             position: relative;
             width: 850px;
-            height: 90px;
-            margin: 0px auto;
-            padding: 80px;
+            height: 250px; 
+            margin: 20px auto;
+            padding: 20px;
             border: 1px solid #ccc;
             border-radius: 10px;
             box-shadow: 4px 2px 10px rgba(0, 0, 0, 0.1);
-            
-        }
-
-        .magic-tittle{
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            color: rgb(31, 131, 245);
             text-align: left;
         }
-        .second-cont{
-            position: relative;
-            width: 850px;
-            height: 60px;
-            margin: 20px auto;
-            padding: 80px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 4px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .AutoLoading{
-            position: absolute;
-            top: 10px;
-            left: 20px;
+
+        .magic-tittle, .AutoLoading {
             color: rgb(31, 131, 245);
+            margin-bottom: 10px;
+            text-align: left; 
+        }
+
+        #magic-button {
+            margin-bottom: 20px;
+            text-align: left; 
+        }
+
+        #image-container img, #auto-image-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            display: none; 
         }
     </style>
 </head>
-
 <body>
     <nav>
         <a href="pagina.html">Personalizer</a>
         <a href="form.html">Form</a>
         <a href="image.html">Images</a>
-        <a href="mode.html">Mode</a>        
+        <a href="mode.html">Mode</a>
     </nav>
     <div class="container">
-        <h4 class="magic-tittle">Magic button: Create & Change Image</h3>
-
+        <h4 class="magic-tittle">Magic button: Create & Change Image</h4>
         <button id="magic-button">Change Image!</button>
-        
+        <div id="image-container">
+            <img src="una.jpg" alt="Image 1" id="image1">
+            <img src="dos.jpg" alt="Image 2" id="image2">
+            <img src="tres.jpg" alt="Image 3" id="image3">
+        </div>
     </div>
     <div class="second-cont">
-        <h4 class="AutoLoading">AutoLoading</h3>
+        <h4 class="AutoLoading">AutoLoading</h4>
+        <div id="auto-image-container">
+            <img src="una.jpg" alt="Auto Image 1" id="auto-image1">
+            <img src="dos.jpg" alt="Auto Image 2" id="auto-image2">
+            <img src="tres.jpg" alt="Auto Image 3" id="auto-image3">
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Array de imágenes
+        const images = ["una.jpg", "dos.jpg", "tres.jpg"];
+        let currentImageIndex = 0;
+        let intervalId = null;
+
+        function changeImage(containerId) {
+            const imageContainer = document.getElementById(containerId);
+            const imagesElements = imageContainer.getElementsByTagName("img");
+
+            for (let img of imagesElements) {
+                img.style.display = "none";
+            }
+
+     
+            imagesElements[currentImageIndex].style.display = "block";
+
+         
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+        }
+
+     
+        document.getElementById("magic-button").addEventListener("click", function() {
+            if (intervalId === null) {
+        
+                intervalId = setInterval(() => {
+                    changeImage("image-container");
+                    changeImage("auto-image-container");
+                }, 300); 
+            } else {
+              
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        });
+    </script>
 </body>
 </html>
